@@ -3,10 +3,10 @@ import { Sidebar } from "../components";
 
 const AppLayout = () => {
   return (
-    <div>
+    <div className="flex gap-5 h-screen overflow-x-hidden">
       <Sidebar />
 
-      <main>
+      <main className="ml-72 w-full">
         <Outlet />
       </main>
     </div>
