@@ -1,5 +1,5 @@
 import { useCountries } from "../hooks/useCountries";
-import { Countries, Loader } from "../components";
+import { AsideCountryByCode, Countries, Loader } from "../components";
 
 export const Home = () => {
   const { data, loading, error } = useCountries();
@@ -10,6 +10,7 @@ export const Home = () => {
   return (
     <section>
       {loading ? <Loader /> : <Countries countries={data.countries} />}
+      <AsideCountryByCode />
     </section>
   );
 };

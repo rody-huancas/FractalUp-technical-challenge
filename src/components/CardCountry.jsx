@@ -39,12 +39,15 @@ export const CardCountry = ({ country }) => {
     fetchCountrySite();
   }, []);
 
-  if (loading || !flagData) return <LoaderCard />
+  if (loading || !flagData) return <LoaderCard />;
 
   const filtered_flag = flagData.find((flag) => flag.flag === country.emoji);
 
   return (
-    <div className="w-full shadow-xl rounded-2xl flex flex-col overflow-hidden cursor-pointer card_country">
+    <div
+      onClick={() => {}}
+      className="w-full shadow-xl rounded-2xl flex flex-col overflow-hidden cursor-pointer card_country"
+    >
       <div className="h-52 overflow-hidden">
         <img
           src={countrySite ? countrySite : "/images/image-not-found.webp"}

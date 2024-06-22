@@ -3,5 +3,13 @@ import { Sidebar } from "./Sidebar";
 import { Countries } from "./Countries";
 import { LoaderCard } from "./LoaderCard";
 import { CardCountry } from "./CardCountry";
+import { AsideCountryByCode } from "./AsideCountryByCode";
 
-export { Sidebar, CardCountry, Countries, Loader, LoaderCard };
+export {
+  Sidebar,
+  CardCountry,
+  Countries,
+  Loader,
+  LoaderCard,
+  AsideCountryByCode,
+};
