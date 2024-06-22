@@ -3,11 +3,16 @@ import { useEffect, useState } from "react";
 import { LoaderCard } from "./LoaderCard";
 // api
 import { getAllFlagsByCountry, getSiteCountry } from "../api/api";
+// store
+import { useCountryStore } from "../store/useCountryStore";
 
 export const CardCountry = ({ country }) => {
+  const setCountryData = useCountryStore(state => state.setCountryData);
+  const setShowAsideCountry = useCountryStore(state => state.setShowAsideCountry);
+
+  const [loading, setLoading] = useState(true);
   const [flagData, setFlagData] = useState(null);
   const [countrySite, setCountrySite] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,9 +48,20 @@ export const CardCountry = ({ country }) => {
 
   const filtered_flag = flagData.find((flag) => flag.flag === country.emoji);
 
+  const handleClick = () => {
+    const dataToStore = {
+      code: country.code,
+      flagImage: filtered_flag.flags.svg,
+      siteImage: countrySite ? countrySite : "/images/image-not-found.webp",
+    };
+
+    setCountryData(dataToStore);
+    setShowAsideCountry(true);
+  };
+
   return (
     <div
-      onClick={() => {}}
+      onClick={handleClick}
       className="w-full shadow-xl rounded-2xl flex flex-col overflow-hidden cursor-pointer card_country"
     >
       <div className="h-52 overflow-hidden">

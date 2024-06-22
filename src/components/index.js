@@ -3,6 +3,7 @@ import { Sidebar } from "./Sidebar";
 import { Countries } from "./Countries";
 import { LoaderCard } from "./LoaderCard";
 import { CardCountry } from "./CardCountry";
+import { LoaderAside } from "./LoaderAside";
 import { AsideCountryByCode } from "./AsideCountryByCode";
 
 export {
@@ -12,4 +13,5 @@ export {
   Loader,
   LoaderCard,
   AsideCountryByCode,
+  LoaderAside,
 };
