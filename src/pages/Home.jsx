@@ -12,7 +12,7 @@ export const Home = () => {
   const [filteredCountry, setFilteredCountry] = useState([]);
 
   useEffect(() => {
-    if (searchParameter !== null) {
+    if (searchParameter || searchParameter !== null) {
       const filteredCountries = data.countries.filter((country) =>
         country.name.toLowerCase().includes(searchParameter.toLowerCase())
       );
@@ -21,6 +21,10 @@ export const Home = () => {
       setFilteredCountry(data ? data.countries : []);
     }
   }, [searchParameter]);
+
+  useEffect(() => {
+    if (data && data.countries) setFilteredCountry(data.countries);
+  }, [data]);
 
   if (error) return <ErrorCountry />;
 
