@@ -6,7 +6,7 @@ const AppLayout = () => {
     <div className="flex gap-5 h-screen overflow-x-hidden">
       <Sidebar />
 
-      <main className="ml-72 w-full">
+      <main className="md:ml-72 w-full">
         <Outlet />
       </main>
     </div>

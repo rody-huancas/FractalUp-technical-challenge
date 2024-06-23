@@ -9,3 +9,14 @@
 .card_country:hover .card_country_img {
   transform: scale(1.05);
 }
+
+.container_aside::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #ccc;
+}
+
+.container_aside::-webkit-scrollbar-thumb {
+  background: #000;
+  border-radius: 4px;
+}

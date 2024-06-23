@@ -10,8 +10,8 @@ export const AppRouter = () => {
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route index element={<Home />} />
-          <Route path="/about" element={<ViewOne />} />
-          <Route path="/contact" element={<ViewTwo />} />
+          <Route path="/view-one" element={<ViewOne />} />
+          <Route path="/view-two" element={<ViewTwo />} />
         </Route>
       </Routes>
     </BrowserRouter>

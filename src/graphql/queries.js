@@ -18,7 +18,15 @@ export const GET_COUNTRY = gql`
     country(code: $code) {
       code
       name
+      currencies
+      capital
       continent {
+        name
+      }
+      states {
+        name
+      }
+      languages {
         name
       }
     }
