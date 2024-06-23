@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useEffect, useState } from "react";
 // component
 import { LoaderCard } from "./LoaderCard";
@@ -7,6 +8,7 @@ import { getAllFlagsByCountry, getSiteCountry } from "../api/api";
 import { useCountryStore } from "../store/useCountryStore";
 
 export const CardCountry = ({ country }) => {
+  const countryData = useCountryStore((state) => state.countryData);
   const setCountryData = useCountryStore(state => state.setCountryData);
   const setShowAsideCountry = useCountryStore(state => state.setShowAsideCountry);
 
@@ -62,7 +64,9 @@ export const CardCountry = ({ country }) => {
   return (
     <div
       onClick={handleClick}
-      className="w-full shadow-xl rounded-2xl flex flex-col overflow-hidden cursor-pointer card_country"
+      className={classNames("w-full shadow-xl rounded-2xl flex flex-col overflow-hidden cursor-pointer card_country", {
+        "bg-blue-600 text-white transition-all duration-300 ease-out": countryData?.code === country?.code
+      })}
     >
       <div className="h-52 overflow-hidden">
         <img
@@ -78,7 +82,10 @@ export const CardCountry = ({ country }) => {
           className="w-24"
         />
         <div className="flex flex-col gap-1">
-          <h3 className="text-lg font-bold text-blue-600">{country.name}</h3>
+          <h3 className={classNames("text-lg font-bold", {
+            "text-white": countryData?.code === country?.code,
+            "text-blue-600": countryData?.code !== country?.code
+          })}>{country.name}</h3>
           <p>{country.continent.name}</p>
         </div>
       </div>

@@ -9,13 +9,11 @@ import { GET_COUNTRY } from "../graphql/queries";
 import { LoaderAside } from "./LoaderAside";
 
 export const AsideCountryByCode = () => {
-  const countryData = useCountryStore((state) => state.countryData);
-  const showAsideCountry = useCountryStore((state) => state.showAsideCountry);
-  const setShowAsideCountry = useCountryStore(
-    (state) => state.setShowAsideCountry
-  );
-  const setLoadingCountry = useCountryStore((state) => state.setLoadingCountry);
-  const isLoadingCountry = useCountryStore((state) => state.isLoadingCountry);
+  const countryData         = useCountryStore((state) => state.countryData);
+  const showAsideCountry    = useCountryStore((state) => state.showAsideCountry);
+  const isLoadingCountry    = useCountryStore((state) => state.isLoadingCountry);
+  const setLoadingCountry   = useCountryStore((state) => state.setLoadingCountry);
+  const setShowAsideCountry = useCountryStore((state) => state.setShowAsideCountry);
 
   const [getCountry] = useLazyQuery(GET_COUNTRY);
   const [country, setCountry] = useState(null);
@@ -102,8 +100,8 @@ export const AsideCountryByCode = () => {
                   <div className="text-lg flex flex-col gap-3">
                     <strong className="text-blue-600">Estados:</strong>
                     <div className="text-base  shadow-xl rounded-xl px-7 py-2 w-full h-20 overflow-y-scroll flex flex-col container_aside">
-                      {country?.states.map((state) => (
-                        <small key={state.name} className="text-base">
+                      {country?.states.map((state, index) => (
+                        <small key={index} className="text-base">
                           {state.name}
                         </small>
                       ))}

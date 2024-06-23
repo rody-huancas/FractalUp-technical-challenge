@@ -1,18 +1,27 @@
-import classNames      from "classnames";
-import { Link        } from "react-router-dom";
-import { MenuItem    } from "./MenuItem";
-import { useState    } from "react";
+import classNames from "classnames";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 // icons
-import { MenuIcon  } from "./icons/MenuIcon";
+import { MenuIcon } from "./icons/MenuIcon";
 import { CloseIcon } from "./icons/CloseIcon";
 // components
+import { MenuItem } from "./MenuItem";
 // data
 import { MENU_DATA } from "../data";
+// store
+import { useCountryStore } from "../store/useCountryStore";
 
 export const Sidebar = () => {
+  const setShowAsideCountry = useCountryStore( (state) => state.setShowAsideCountry );
+
   const { pathname } = useLocation();
   const [showMenu, setShowMenu] = useState(false);
+
+  const handleClick = () => {
+    setShowAsideCountry(false);
+    setShowMenu(!showMenu);
+  };
 
   return (
     <>
@@ -40,7 +49,7 @@ export const Sidebar = () => {
 
       <button
         type="button"
-        onClick={() => setShowMenu(!showMenu)}
+        onClick={handleClick}
         className="md:hidden absolute bottom-10 right-10 bg-zinc-900 text-white p-3 rounded-full z-40"
       >
         {showMenu ? <CloseIcon /> : <MenuIcon />}
