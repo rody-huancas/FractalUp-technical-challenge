@@ -27,7 +27,7 @@ export const Sidebar = () => {
     <>
       <aside
         className={classNames(
-          "bg-zinc-900 text-white h-screen w-72 fixed top-0 p-10 flex flex-col gap-12 transition-all z-50",
+          "bg-zinc-900 text-white h-[100dvh] w-72 fixed top-0 p-10 flex flex-col gap-12 transition-all z-50",
           {
             "left-0 delay-300": showMenu,
             "-left-full md:left-0": !showMenu,

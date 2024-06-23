@@ -37,7 +37,7 @@ export const Home = () => {
   });
 
   return (
-    <section>
+    <section className="pb-10">
       <div className="bg-white sticky top-0 right-0 z-30 py-5 px-10">
         <SearchForm />
       </div>

@@ -1,11 +1,10 @@
 import classNames from "classnames";
 import { useState } from "react";
-// data
-import { CONTINENTS_DATA } from "../data";
 // store
 import { useCountryStore } from "../store/useCountryStore";
 // icons
 import { SearchIcon } from "./icons/SearchIcon";
+// components
 import { FilterContinents } from "./FilterContinents";
 
 export const SearchForm = () => {
