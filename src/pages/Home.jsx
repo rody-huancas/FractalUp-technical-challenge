@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+// helpers
+import { continents } from "../helpers";
 // hooks
 import { useCountries } from "../hooks/useCountries";
 // store
@@ -7,9 +9,13 @@ import { useCountryStore } from "../store/useCountryStore";
 import { AsideCountryByCode, Countries, ErrorCountry, Loader, NoResultsFound, SearchForm } from "../components";
 
 export const Home = () => {
-  const searchParameter = useCountryStore((state) => state.searchParameter);
+  const searchParameter  = useCountryStore((state) => state.searchParameter);
+  const filterContinents = useCountryStore((state) => state.filterContinents);
+
   const { data, loading, error } = useCountries();
   const [filteredCountry, setFilteredCountry] = useState([]);
+
+  if (error) return <ErrorCountry />;
 
   useEffect(() => {
     if (searchParameter || searchParameter !== null) {
@@ -26,17 +32,21 @@ export const Home = () => {
     if (data && data.countries) setFilteredCountry(data.countries);
   }, [data]);
 
-  if (error) return <ErrorCountry />;
+  const filteredByContinents = filteredCountry.filter((country) => {
+    return filterContinents.length === 0 ? true : continents(country, filterContinents)
+  });
 
   return (
-    <section className="p-10">
-      <SearchForm />
+    <section>
+      <div className="bg-white sticky top-0 right-0 z-30 py-5 px-10">
+        <SearchForm />
+      </div>
 
-      {filteredCountry.length === 0 && searchParameter !== null && (
+      {filteredByContinents.length === 0 && searchParameter !== null && (
         <NoResultsFound searchParameter={searchParameter} />
       )}
 
-      {loading ? <Loader /> : <Countries countries={filteredCountry} />}
+      {loading ? <Loader /> : <Countries countries={filteredByContinents} />}
 
       <AsideCountryByCode />
     </section>

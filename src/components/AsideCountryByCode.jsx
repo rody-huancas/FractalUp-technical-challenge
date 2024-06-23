@@ -44,7 +44,7 @@ export const AsideCountryByCode = () => {
           className={classNames(
             "fixed bottom-0 bg-white shadow-lg w-80 z-30 p-5 pb-10 md:pb-5 flex flex-col gap-5 rounded-l-lg transition-all duration-500",
             {
-              "right-4": showAsideCountry,
+              "right-0": showAsideCountry,
               "-right-full": !showAsideCountry,
             }
           )}
