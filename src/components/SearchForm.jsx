@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // store
 import { useCountryStore } from "../store/useCountryStore";
 // icons
@@ -27,6 +27,11 @@ export const SearchForm = () => {
 
   const onResetFilter = () => setFilterContinents([]);
 
+  useEffect(() => {
+    if (searchParameter !== "" && searchParameter !== null) setIsActive(false);
+    else setIsActive(true);
+  }, [searchParameter]);
+  
   return (
     <>
       <div className="relative">
