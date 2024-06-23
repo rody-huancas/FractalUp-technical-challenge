@@ -50,7 +50,7 @@ export const Sidebar = () => {
       <button
         type="button"
         onClick={handleClick}
-        className="md:hidden absolute bottom-10 right-10 bg-zinc-900 text-white p-3 rounded-full z-40"
+        className="md:hidden absolute bottom-5 right-5 bg-zinc-900 text-white p-3 rounded-full z-40"
       >
         {showMenu ? <CloseIcon /> : <MenuIcon />}
       </button>

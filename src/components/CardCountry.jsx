@@ -10,6 +10,7 @@ import { useCountryStore } from "../store/useCountryStore";
 export const CardCountry = ({ country }) => {
   const countryData = useCountryStore((state) => state.countryData);
   const setCountryData = useCountryStore(state => state.setCountryData);
+  const showAsideCountry = useCountryStore((state) => state.showAsideCountry);
   const setShowAsideCountry = useCountryStore(state => state.setShowAsideCountry);
 
   const [loading, setLoading] = useState(true);
@@ -65,7 +66,7 @@ export const CardCountry = ({ country }) => {
     <div
       onClick={handleClick}
       className={classNames("w-full shadow-xl rounded-2xl flex flex-col overflow-hidden cursor-pointer card_country", {
-        "bg-blue-600 text-white transition-all duration-300 ease-out": countryData?.code === country?.code
+        "bg-blue-600 text-white transition-all duration-300 ease-out": countryData?.code === country?.code && showAsideCountry
       })}
     >
       <div className="h-52 overflow-hidden">
@@ -83,8 +84,8 @@ export const CardCountry = ({ country }) => {
         />
         <div className="flex flex-col gap-1">
           <h3 className={classNames("text-lg font-bold", {
-            "text-white": countryData?.code === country?.code,
-            "text-blue-600": countryData?.code !== country?.code
+            "text-white": countryData?.code === country?.code && showAsideCountry,
+            "text-blue-600": !showAsideCountry
           })}>{country.name}</h3>
           <p>{country.continent.name}</p>
         </div>
