@@ -3,7 +3,7 @@ import { CONTINENTS_DATA } from "../data";
 
 export const FilterContinents = ({ filterContinents, onClickContinent, onResetFilter }) => {
     return (
-    <div className="w-full flex justify-center z-30 pt-2">
+    <div className="w-full flex justify-center z-30">
       <div className="w-full lg:w-3/4 p-5 rounded-xl shadow-xl flex flex-col gap-5 absolute bg-white">
         <div className="flex items-center justify-between">
           <h3 className="lg:text-lg font-bold text-gray-800/80">

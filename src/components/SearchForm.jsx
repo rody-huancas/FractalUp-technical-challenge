@@ -29,7 +29,6 @@ export const SearchForm = () => {
 
   useEffect(() => {
     if (searchParameter !== "" && searchParameter !== null) setIsActive(false);
-    else setIsActive(true);
   }, [searchParameter]);
   
   return (
